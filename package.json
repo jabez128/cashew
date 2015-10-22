@@ -3,8 +3,12 @@
   "version": "0.1.0",
   "description": "an reactive framework",
   "main": "lib/cashew.js",
+  "babel": {
+    "jsxPragma": "Cashew.element"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify -t babelify local/app.js > local/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -12,7 +16,8 @@
   },
   "keywords": [
     "reactive",
-    "virtual-dom"
+    "virtual-dom",
+    "cashew"
   ],
   "author": "jabez zhang",
   "license": "MIT",
@@ -23,5 +28,10 @@
   "dependencies": {
     "rx": "^4.0.6",
     "virtual-dom": "^2.1.1"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babelify": "^6.4.0",
+    "browserify": "^11.2.0"
   }
 }
