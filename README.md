@@ -6,11 +6,12 @@
 
 # demo
 
-> git clone https://github.com/jabez128/cashew.git
-> cd cashew
-> npm run build
-> open local/index.html
-
+```shell
+ git clone https://github.com/jabez128/cashew.git    
+ cd cashew    
+ npm run build    
+ open local/index.html     
+``` 
 
 > 仍然在开发中~
 
