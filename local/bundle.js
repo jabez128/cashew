@@ -1,21 +1,22 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var ComponentFactory = function ComponentFactory(obj) {
 	_classCallCheck(this, ComponentFactory);
 
 	this.obj = obj;
+	this._$type = "cashewComponent";
 	this.constructor = ComponentFactory;
 };
 
-exports['default'] = ComponentFactory;
-module.exports = exports['default'];
+exports["default"] = ComponentFactory;
+module.exports = exports["default"];
 
 },{}],2:[function(require,module,exports){
 'use strict';
@@ -78,14 +79,14 @@ Object.defineProperty(exports, '__esModule', {
 var _virtualDom = require("virtual-dom");
 
 function element(selector, props) {
-	for (var _len = arguments.length, rest = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-		rest[_key - 2] = arguments[_key];
-	}
-
 	if (typeof selector == 'string') {
+		for (var _len = arguments.length, rest = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+			rest[_key - 2] = arguments[_key];
+		}
+
 		return (0, _virtualDom.h)(selector, props, rest);
-	} else {
-		return (0, _virtualDom.h)(selector, props, rest);
+	} else if (selector._$type == "cashewComponent") {
+		return selector.obj.render();
 	}
 }
 
@@ -123,12 +124,27 @@ var _libCashewJs = require("../lib/cashew.js");
 
 var _libCashewJs2 = _interopRequireDefault(_libCashewJs);
 
-var Sub = _libCashewJs2["default"].createClass({
+var Sub2 = _libCashewJs2["default"].createClass({
 	render: function render() {
 		return _libCashewJs2["default"].element(
 			"h1",
 			null,
-			"世界"
+			"世界2"
+		);
+	}
+});
+
+var Sub = _libCashewJs2["default"].createClass({
+	render: function render() {
+		return _libCashewJs2["default"].element(
+			"div",
+			null,
+			_libCashewJs2["default"].element(
+				"h1",
+				null,
+				"世界"
+			),
+			_libCashewJs2["default"].element(Sub2, null)
 		);
 	}
 });
@@ -150,12 +166,12 @@ var App = _libCashewJs2["default"].createClass({
 				null,
 				"你好"
 			),
-			_libCashewJs2["default"].element("input", { type: "text" })
+			_libCashewJs2["default"].element(Sub, null)
 		);
 	}
 });
 
-console.log(App.constructor);
+console.log(App._$type == "cashewComponent");
 
 _libCashewJs2["default"].render(App, document.getElementById('app'));
 

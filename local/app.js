@@ -2,9 +2,20 @@
 
 import Cashew from "../lib/cashew.js"
 
+let Sub2 = Cashew.createClass({
+	render(){
+		return <h1>世界2</h1>
+	}
+})
+
 let Sub = Cashew.createClass({
 	render(){
-		return <h1>世界</h1>
+		return (
+			<div>
+				<h1>世界</h1>
+				<Sub2 />
+			</div>
+		)
 	}
 })
 
@@ -18,12 +29,10 @@ let App = Cashew.createClass({
 					backgroundColor: "red"
 				}} onClick={()=>{conosle.log(123)}}></div>
 				<h1>你好</h1>
-				<input type='text' />
+				<Sub />
 		   	</div>
 		   )
 	}
 })
-
-console.log(App.constructor)
 
 Cashew.render(App,document.getElementById('app'))
