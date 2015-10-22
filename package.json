@@ -1,0 +1,27 @@
+{
+  "name": "cashew",
+  "version": "0.1.0",
+  "description": "an reactive framework",
+  "main": "lib/cashew.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jabez128/cashew.git"
+  },
+  "keywords": [
+    "reactive",
+    "virtual-dom"
+  ],
+  "author": "jabez zhang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jabez128/cashew/issues"
+  },
+  "homepage": "https://github.com/jabez128/cashew#readme",
+  "dependencies": {
+    "rx": "^4.0.6",
+    "virtual-dom": "^2.1.1"
+  }
+}
